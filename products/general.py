@@ -6,8 +6,8 @@ def setting(request):
   }
   return context
 
-def product(request):
-  content={
-    'data':Product.objects.all()
-  }
-  return content
+# def product(request):
+#   content={
+#     'data':Product.objects.all()
+#   }
+#   return content
