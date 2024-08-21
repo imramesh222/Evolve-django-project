@@ -5,7 +5,10 @@ from .views import *
 
 urlpatterns =[
   path('',homepage,name='homepage'),
+  path('addproducts',addProduct),
   path('allproducts',allproduct),
-  path('all_products',all_product)
+  path('all_products',all_product),
+  path('addcategory',addCategory),
+  path('allcategory',allCategory),
   
 ]

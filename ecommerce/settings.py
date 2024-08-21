@@ -40,7 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'products',
+    'crispy_forms',
+    "crispy_bootstrap4",
 ]
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
+CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -66,6 +70,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'products.general.setting',
+                
             ],
         },
     },
@@ -117,9 +122,10 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
+STATIC_URL='static/'
+STATICFILES_DIRS=[os.path.join(BASE_DIR,'static')]
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

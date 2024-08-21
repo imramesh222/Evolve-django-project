@@ -1,6 +1,27 @@
 {% extends "layout.html" %}
 {% block main-content %}
 
+{% for msg in messages %}
+  {% if msg.level == DEFAULT_MESSAGES_LEVELS.SUCCESS %}
+  <div class="alert alert-success" role="alert">
+    {{msg}}
+  </div>
+  
+  
+  {% endif %}
+  
+  {% if msg.level == DEFAULT_MESSAGES_LEVELS.SUCCESS %}
+  <div class="alert alert-danger" role="alert">
+    {{msg}}
+  </div>
+  
+  
+  {% endif %} 
+
+  
+
+{% endfor %}
+
 
     <div class="container">
       <h1 class="text-center">Products</h1>
@@ -42,4 +63,4 @@
       </div>
     </div>
 
-{% endblock main-content %}
+{% endblock  %}

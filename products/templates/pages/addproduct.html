@@ -1,0 +1,14 @@
+{% extends "layout.html" %} {% load crispy_forms_tags %} {% block main-content%}
+
+<div class="container">
+  <div class="d-flex">
+    <div class="col-md-6 p-3 border">
+      <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %} {{prodForm | crispy}}
+        <button class="btn btn-primary my-2">Add</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
