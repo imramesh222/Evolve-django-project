@@ -42,8 +42,10 @@ def addCategory(request):
         catform=CategoryForm(request.POST)
         if catform.is_valid():
             catform.save()
+            messages.add_message(request,messages.SUCCESS,'Category Added succesfully')
             return redirect('/allcategory')
         else:
+            messages.add_message(request,messages.ERROR,'Category add unsuccesful')
             return render(request,'addcategory.html',{'catForm':context})
     context={
         'catForm':CategoryForm()
@@ -55,3 +57,10 @@ def allCategory(request):
         'category':Category.objects.all()
     }
     return render(request,'pages/allcategory.html',context)
+
+def deleteCategory(request,category_id):
+    category=Category.objects.get(id=category_id)
+    category.delete()
+    messages.add_message(request,messages.SUCCESS,("Item removed succesfully!!"))
+    return redirect('/allcategory')
+    

@@ -2,7 +2,7 @@
 {% block main-content %}
 
 {% for msg in messages %}
-  {% if msg.level == DEFAULT_MESSAGES_LEVELS.SUCCESS %}
+  {% if msg.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
   <div class="alert alert-success" role="alert">
     {{msg}}
   </div>
@@ -10,16 +10,12 @@
   
   {% endif %}
   
-  {% if msg.level == DEFAULT_MESSAGES_LEVELS.SUCCESS %}
+  {% if msg.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
   <div class="alert alert-danger" role="alert">
     {{msg}}
   </div>
-  
-  
+
   {% endif %} 
-
-  
-
 {% endfor %}
 
 

@@ -1,5 +1,22 @@
 {% extends "layout.html" %} {% block main-content %}
 
+{% for msg in messages %}
+  {% if msg.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+  <div class="alert alert-success" role="alert">
+    {{msg}}
+  </div>
+  
+  
+  {% endif %}
+  
+  {% if msg.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+  <div class="alert alert-danger" role="alert">
+    {{msg}}
+  </div>
+
+  {% endif %} 
+{% endfor %}
+
 <!-- Navigation Bar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light px-4">
   <a class="navbar-brand" href="#">Ecommerce</a>

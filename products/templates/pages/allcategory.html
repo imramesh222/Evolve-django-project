@@ -1,9 +1,26 @@
 {% extends "layout.html" %}
 {% block main-content %}
 
+{% for msg in messages %}
+  {% if msg.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+  <div class="alert alert-success" role="alert">
+    {{msg}}
+  </div>
+  
+  
+  {% endif %}
+  
+  {% if msg.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+  <div class="alert alert-danger" role="alert">
+    {{msg}}
+  </div>
+
+  {% endif %} 
+{% endfor %}
+
 
     <div class="container">
-      <h1 class="text-center">Products</h1>
+      <h1 class="text-center">All category</h1>
       <div class="d-flex justify-content-center">
         <div class="col-md-7 rounded shadow">
           <table class="table table-border table-striped">
@@ -11,9 +28,8 @@
               <tr>
               <th>Sno.</th>
               <th>Name</th>
-                <th>Description</th>
-
-
+              <th>Description</th>
+              <th>Action</th>
               </tr>
             </thead>
             <tbody>
@@ -22,6 +38,11 @@
                 <td>{{forloop.counter}}</td>
                 <td>{{data.name}}</td>
                 <td>{{data.description}}</td>  
+                <td>
+                  
+                  <a href=""><button class="btn btn-secondary">Edit</button></a>
+                  <a href="/deletecategory/{{data.id}}" onclick="return confirm('Are you sure you want to delete')"><button class="btn btn-danger">Delete</button></a>
+                </td>
               </tr>
 
               {% endfor %}
