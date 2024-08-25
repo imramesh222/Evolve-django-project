@@ -25,6 +25,7 @@ def addProduct(request):
     return render(request,'pages/addproduct.html',context)
 
 
+
 def allproduct(request):
     context={
         'product':Product.objects.all()
@@ -64,3 +65,44 @@ def deleteCategory(request,category_id):
     messages.add_message(request,messages.SUCCESS,("Item removed succesfully!!"))
     return redirect('/allcategory')
     
+
+def updateCategory(request,category_id):
+    cateData=Category.objects.get(id=category_id)
+
+    if request.method=='POST':
+        cateform=CategoryForm(request.POST,request.FILES,instance=cateData)
+        if cateform.is_valid():
+            cateform.save()
+            messages.add_message(request,messages.SUCCESS,'Changed made succesfully')
+            return redirect('/allcategory')
+        else:
+            messages.add_message(request,messages.ERROR,'Changed made unsuccessful')
+            return redirect('/allcategory')
+    context={
+        'catForm':CategoryForm(instance=cateData)
+
+    }
+    return render(request,'pages/updatecategory.html',context)
+
+def deleteProduct(request,product_id):
+    product=Product.objects.get(id=product_id)
+    product.delete()
+    messages.add_message(request,messages.SUCCESS,('Product deleted'))
+    return redirect('/allproducts')
+
+def updateProduct(request,product_id):
+    prodData=Product.objects.get(id=product_id)
+    if request.method=='POST':
+        cateform=ProductForm(request.POST,request.FILES,instance=prodData)
+        if cateform.is_valid():
+            cateform.save()
+            messages.add_message(request,messages.SUCCESS,'Changed made succesfully')
+            return redirect('/allproducts')
+        else:
+            messages.add_message(request,messages.ERROR,'Changed made unsuccessful')
+            return redirect('/allproducts')
+
+    context={
+        'prodForm':ProductForm(instance=prodData)
+    }
+    return render(request,'pages/updateproduct.html',context)

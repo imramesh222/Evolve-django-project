@@ -20,33 +20,39 @@
 
 
     <div class="container">
-      <h1 class="text-center">Products</h1>
-      <div class="d-flex justify-content-center">
-        <div class="col-md-7 rounded shadow">
-          <table class="table table-border table-striped">
+      <h1 class="text-center text-danger">Products</h1>
+      <div class="d-flex justify-content-center  ">
+        <div class="col-md-10 rounded shadow-lg p-3 bg-success">
+          <table class="table table-border table-striped table-hover">
             <thead>
-              <tr>
-              <th>Sno.</th>
+              <tr class="text-center">
+                <th>Sno.</th>
                 <th>Image</th>
                 <th>Name</th>
                 <th>Category</th>
                 <th>Price</th>
                 <th>Quantity</th>
+                <th>Category</th>
                 <th>Actiion</th>
               </tr>
             </thead>
             <tbody>
               {% for data in product %}
               <tr>
-              <td>{{forloop.counter}}</td>
+                <td>{{forloop.counter}}</td>
                 <td><img src="{{data.image}}" alt="" width="100px" height="100px"></td>
                 <td>{{data.name}}</td>
                 <td>{{data.category}}</td>
                 <td>Rs.{{data.price}}</td>
                 <td>{{data.quantity}}</td>
+                <td>{{data.category}}</td>
+                <td>
+                  <div class="d-md-flex justify-content-center align-items-center">
+                    <a href="updateproduct/{{data.id}}"><i class="bi bi-pencil-square fs-2"></i></a>
+                    <a href="deleteproduct/{{data.id}}" onclick="return confirm('Are you sure you want to delete this item?')"> <i class="bi bi-trash fs-2 pe-md-2"></i></a>
+                  </div>
+                </td>
                 
-              </tr>
-
               {% endfor %}
               
             </tbody>

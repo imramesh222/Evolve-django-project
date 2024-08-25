@@ -1,0 +1,33 @@
+{% extends "layout.html" %} {% load crispy_forms_tags %} {% block main-content%}
+
+{% for msg in messages %}
+  {% if msg.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+  <div class="alert alert-success" role="alert">
+    {{msg}}
+  </div>
+  
+  
+  {% endif %}
+  
+  {% if msg.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+  <div class="alert alert-danger" role="alert">
+    {{msg}}
+  </div>
+
+  {% endif %} 
+{% endfor %}
+
+
+<div class="container">
+  <div class="d-flex">
+    <div class="col-md-6 p-3 border">
+      <h2 class="text-center">Update Category</h2>
+      <form action="" method="post">
+        {% csrf_token %} {{catForm | crispy}}
+        <button class="btn btn-primary my-2">Save</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
