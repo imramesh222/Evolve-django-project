@@ -106,3 +106,20 @@ def updateProduct(request,product_id):
         'prodForm':ProductForm(instance=prodData)
     }
     return render(request,'pages/updateproduct.html',context)
+
+# def update(request,product_id):
+    productData=Product.objects.get(id=product_id)
+
+    if request.method=="POST":
+        prodform=ProductForm(request.POST,request.FILES,instance=productData)
+        if prodform.is_valid():
+            prodform.save()
+            messages.add_message(request,messages.SUCCESS,'Hello girl')
+            return redirect('/allproducts')
+        else:
+            messages.add_message(request,messages.ERROR,'Hello Boy')
+            return request('/allproducts')
+        
+        context={
+            'prodform':Pro
+        }
