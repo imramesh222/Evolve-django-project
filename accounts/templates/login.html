@@ -3,18 +3,23 @@
 {% load static %}
 {% block main-content %}
 
+<style>
+  .asteriskField{
+    color:red;
+  }
+</style>
 
 <div class="container my-3">
   <div class=" col-md-flex  col-md-5 rounded border p-4 shadow">
     
     <form action="" method="post">
-      <h2 class="text-center">Sign Up form</h2>
+      <h2 class="text-center">Login form</h2>
       <hr>
       {% csrf_token %}
-      {{Form | crispy}}
+      {{Forms | crispy}}
 
       <div class="my-2">
-        <button class="btn btn-primary" type="submit">Register</button>
+        <button class="btn btn-primary" type="submit">Login</button>
       </div>
     </form>
   </div>

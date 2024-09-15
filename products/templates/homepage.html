@@ -9,8 +9,29 @@
     <title>{{d.title}}</title>
   </head>
   <body>
-    <h1>This is Homepage returned</h1>
+    {% for msg in messages %}
+  {% if msg.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+  <div class="alert alert-success" role="alert">
+    {{msg}}
+  </div>
+  
+  
+  {% endif %}
+  
+  {% if msg.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+  <div class="alert alert-danger" role="alert">
+    {{msg}}
+  </div>
+
+  {% endif %} 
+{% endfor %}
+    <h1>This is Homepage</h1>
     <img src="{%static 'images/p1.jpg'%}" alt="p1" width="100px" />
+
+    {% if user.is_authenticated %}
+    <a href="/userlogout">Logout</a>
+    {% endif %}
+
   </body>
   {% endfor %}
 </html>
