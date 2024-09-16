@@ -47,4 +47,4 @@ def userLogin(request):
 def userLogout(request):
   logout(request)
   messages.add_message(request,messages.SUCCESS,'Logout successful.')
-  return redirect('/')
+  return redirect('/userlogin')
