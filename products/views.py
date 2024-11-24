@@ -5,8 +5,7 @@ from .models import *
 from .forms import *
 # Create your views here.
 
-def homepage(request):
-    return render(request, 'homepage.html')
+
 
 def addProduct(request):
     if request.method=='POST':
